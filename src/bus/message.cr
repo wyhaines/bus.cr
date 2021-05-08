@@ -12,14 +12,25 @@ class Bus
     property evaluated : Bool = false
 
     def initialize(
-      @pipeline,
-      @bus : Bus,
-      @body = [""],
-      @tags = [] of String,
-      @parameters = Hash(String, String).new,
-      @origin = nil,
-      @uuid = CSUUID.new
+      @pipeline : Pipeline(Message),
+      #@bus : Bus,
+      @body : Array(String) = [""],
+      @tags : Array(String) = [] of String,
+      @parameters : Hash(String, String) = Hash(String, String).new,
+      @origin : String? = nil,
+      @uuid : CSUUID = CSUUID.new
     )
+    end
+
+    def initialize(
+      @pipeline : Pipeline(Message),
+      body : String,
+      @tags : Array(String) = [] of String,
+      @parameters : Hash(String, String) = Hash(String, String).new,
+      @origin : String? = nil,
+      @uuid : CSUUID = CSUUID.new
+    )
+      @body = [body]
     end
 
     private def reply_impl(message : Message)
@@ -52,18 +63,24 @@ class Bus
       local_origin = @origin
       tags << local_origin if !local_origin.nil?
       reply_impl(
-        @bus.message(
+        self.class.new(
           body: body,
           parameters: parameters,
           tags: tags,
-          origin: origin
+          origin: origin,
+          pipeline: @pipeline
         )
       )
     end
 
-    def send_evaluation(relevance, certainty, receiver, uuid = @uuid)
+    def send_evaluation(
+      receiver,
+      relevance = 0,
+      certainty = 0,
+      uuid = @uuid
+      )
       reply_impl(
-        @bus.message(
+        self.class.new(
           body: "",
           tags: ["evaluate()"],
           parameters: {
@@ -72,7 +89,8 @@ class Bus
             "receiver"  => receiver,
             "uuid"      => uuid.to_s,
           },
-          origin: origin)
+          origin: origin,
+          pipeline: @pipeline)
       )
     end
   end

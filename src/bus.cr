@@ -103,46 +103,17 @@ class Bus
 
   # Generate a message for this bus.
   def message(
-    body : String,
-    origin : String? = nil,
-    tags : Array(String) = [] of String,
-    parameters : Hash(String, String) = Hash(String, String).new
-  )
-    message_impl(
-      body: [body],
-      origin: origin,
-      tags: tags,
-      parameters: parameters
-    )
-  end
-
-  def message(
-    body : Array(String),
-    origin : String? = nil,
-    tags : Array(String) = [] of String,
-    parameters : Hash(String, String) = Hash(String, String).new
-  )
-    message_impl(
-      body: body,
-      origin: origin,
-      tags: tags,
-      parameters: parameters
-    )
-  end
-
-  def message_impl(
-    body : Array(String),
+    body : Array(String) | String,
     origin : String? = nil,
     tags : Array(String) = [] of String,
     parameters : Hash(String, String) = Hash(String, String).new
   )
     Message.new(
       body: body,
-      parameters: parameters,
-      tags: tags,
       origin: origin,
-      pipeline: @pipeline,
-      bus: self
+      tags: tags,
+      parameters: parameters,
+      pipeline: @pipeline
     )
   end
 

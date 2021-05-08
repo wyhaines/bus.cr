@@ -1,9 +1,7 @@
 require "./spec_helper"
 
-describe Bus do
-  # TODO: Write tests
-
-  it "works" do
-    false.should eq(true)
+describe Bus::VERSION do
+  it "has a reasonable version" do
+    major, minor, patch = Bus::VERSION
   end
 end

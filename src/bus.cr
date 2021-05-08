@@ -64,9 +64,9 @@ class Bus
             msg.parameters["certainty"]
           )
           if evaluation.finished?
-            winner = evaluation.winner
+            winners = evaluation.winners
             evaluation.message.evaluated = true
-            winner.send evaluation.message if winner
+            winners.each { |winner| winner.send evaluation.message if winner }
             @pending_evaluation.delete msg.parameters["uuid"]
           end
         rescue e : Exception
@@ -164,7 +164,18 @@ class Bus
     # This needs to do a two-step send. It needs to find out
     # which handlers are willing to handle the message, through
     # calling the handlers evaluate# methods, and then it needs
-    # to pick one to actually send to.
+    # to pick which one(s) to actually send to.
+    #
+    # Handlers can compete for a best-fit to handle a message.
+    # For example, if there are multiple handlers who
+    # could potentially service a message, but only one of the
+    # set should handle the message, they can compete to determine
+    # the correct one to reveive it.
+    #
+    # Handlers may also opt out of the competition, and choose
+    # to receive the message regardless of the outcome of any
+    # competition-to-handle, or they may opt out of the competition
+    # and simply refuse to handle the message.
 
     @pending_evaluation[message.uuid.to_s] = Evaluation.new(message, receivers.keys)
 

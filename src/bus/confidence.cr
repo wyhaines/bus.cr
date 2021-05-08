@@ -2,8 +2,28 @@ class Bus
   struct Confidence
     getter relevance : Int32
     getter certainty : Int32
+    getter force : Bool?
 
-    def initialize(@relevance, @certainty); end
+    def initialize(
+      relevance : Int32 = 0,
+      certainty : Int32 = 0
+    )
+      @relevance = relevance
+      @certainty = certainty
+      @force = nil
+    end
+
+    def initialize(
+      @relevance : Int32 = 0,
+      @certainty : Int32 = 0,
+      @force : Bool? = nil
+    )
+    end
+
+    def initialize(@force : Bool? = nil)
+      @relevance = 0
+      @certainty = 0
+    end
 
     def <=>(val : Confidence) : Int32
       rel = @relevance

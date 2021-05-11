@@ -7,6 +7,13 @@ require "./bus/*"
 # can reply to a message. Those replies will be routed back to the
 # original sender.
 class Bus
+  # As of Crystal 1.0.0, using Hashes here is faster in single threaded
+  # release mode, but it fails UGLY in multithreaded release mode.
+  # The SplayTreeMap implementation is currently slightly slower than the
+  # hash in single threaded, but it works just fine in multithreaded mode,
+  # so this implementation is going to stick with the SplayTreeMap for now.
+  getter subscriptions : SplayTreeMap(String, Hash(Pipeline(Message), Bool))
+
   def initialize
     @pending_evaluation = SplayTreeMap(String, Evaluation).new
     @subscriptions = SplayTreeMap(String, Hash(Pipeline(Message), Bool)).new do |h, k|
@@ -37,15 +44,18 @@ class Bus
   private def handle_pipeline
     spawn(name: "Pipeline loop") do
       loop do
-        begin
-          msg = @pipeline.receive
-          # This probably needs a way to protect against message loops.
-          send(message: msg)
-        rescue e : Exception
-          puts "pipeline handler"
-          puts(e)
-          puts e.backtrace.join("\n")
-          exit
+        pipeline = @pipeline
+        if pipeline
+          begin
+            msg = pipeline.receive
+            # This probably needs a way to protect against message loops.
+            send(message: msg)
+          rescue e : Exception
+            puts "pipeline handler"
+            puts(e)
+            puts e.backtrace.join("\n")
+            exit
+          end
         end
       end
     end
@@ -57,17 +67,22 @@ class Bus
       loop do
         begin
           msg = pipeline.receive
-          evaluation = @pending_evaluation[msg.parameters["uuid"]]
+          evaluation = @pending_evaluation[msg.parameters["uuid"]]?
+          next if evaluation.nil?
+
           evaluation.set(
-            msg.parameters["receiver"],
-            msg.parameters["relevance"],
-            msg.parameters["certainty"]
+            receiver: msg.parameters["receiver"],
+            relevance: msg.parameters["relevance"],
+            certainty: msg.parameters["certainty"],
+            force: msg.parameters["force"]
           )
           if evaluation.finished?
-            winners = evaluation.winners
-            evaluation.message.evaluated = true
-            winners.each { |winner| winner.send evaluation.message if winner }
             @pending_evaluation.delete msg.parameters["uuid"]
+            spawn(name: "winner #{msg}") do
+              winners = evaluation.winners
+              evaluation.message.evaluated = true
+              winners.each { |winner| winner.send evaluation.message if winner }
+            end
           end
         rescue e : Exception
           puts "evaluation handler"
@@ -81,7 +96,7 @@ class Bus
 
   # Subscribe a new message consumer to the Bus
   def subscribe(tags = [] of String)
-    pipeline = Pipeline(Message).new(capacity: 10, origin: origin_tag)
+    pipeline = Pipeline(Message).new(capacity: 1000, origin: origin_tag)
     tags << pipeline.origin
     tags.each do |tag|
       @subscriptions[tag][pipeline] = true
@@ -106,14 +121,16 @@ class Bus
     body : Array(String) | String,
     origin : String? = nil,
     tags : Array(String) = [] of String,
-    parameters : Hash(String, String) = Hash(String, String).new
+    parameters : Hash(String, String) = Hash(String, String).new,
+    strategy : Message::Strategy = Message::Strategy::RandomWinner
   )
     Message.new(
       body: body,
       origin: origin,
       tags: tags,
       parameters: parameters,
-      pipeline: @pipeline
+      pipeline: @pipeline,
+      strategy: strategy
     )
   end
 
@@ -132,6 +149,7 @@ class Bus
       end
     end
 
+    # puts "  send receivers: #{receivers.keys}"
     # This needs to do a two-step send. It needs to find out
     # which handlers are willing to handle the message, through
     # calling the handlers evaluate# methods, and then it needs

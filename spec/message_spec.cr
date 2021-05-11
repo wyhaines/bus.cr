@@ -26,7 +26,7 @@ describe Bus::Message do
     msg = Bus::Message.new(
       pipeline: pipeline,
       body: ["This is the first line", "This is the second line"]
-       )
+    )
 
     msg.body[0].should eq "This is the first line"
     msg.body[1].should eq "This is the second line"

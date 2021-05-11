@@ -6,7 +6,10 @@ class Bus
     @listener_proc : Fiber? = nil
     getter bus : Bus
 
-    def initialize(@bus, tags = [] of String)
+    def initialize(
+      @bus : Bus,
+      tags : Array(String) = [] of String
+    )
       @handle_counter = 0_u64
       @evaluate_counter = 0_u64
       @pipeline = register_handler(tags)
@@ -24,8 +27,8 @@ class Bus
     end
 
     # All implementations of
-    abstract def evaluate(msg)
-    abstract def handle(msg)
+    abstract def evaluate(msg : Bus::Message)
+    abstract def handle(msg : Bus::Message)
 
     def will_handle?(msg)
       can_handle?(msg) && authorized_to_handle?(msg)
@@ -45,8 +48,13 @@ class Bus
 
     def listen
       spawn(name: "Generic Handler Listen Loop") do
-        ppl = @pipeline
         loop do
+          ppl = @pipeline
+          if ppl.nil?
+            sleep 1
+            next
+          end
+
           begin
             msg = ppl.receive if !ppl.nil?
             if !msg.nil?

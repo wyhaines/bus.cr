@@ -10,5 +10,27 @@ class Bus
       @origin = origin
       super(capacity)
     end
+
+    # Clear everything that is currently in the pipeline.
+    def clear
+      @lock.lock
+      q = @queue
+      q && q.clear
+    ensure
+      @lock.unlock
+    end
+
+    # Get a count of how many items are currently in the pipeline.
+    def size : Int32
+      @lock.lock
+      q = @queue
+      q ? q.size : 0
+    ensure
+      @lock.unlock
+    end
+
+    def <=>(val)
+      self.origin <=> val.origin
+    end
   end
 end

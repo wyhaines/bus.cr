@@ -210,7 +210,21 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#evaluated_count-instance-method" class="signature"><strong>#evaluated_count</strong></a>
+        
+          <div class="summary"><p>Return the number of times that this handler has evaluated a message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#handle(msg:Bus::Message)-instance-method" class="signature"><strong>#handle</strong>(msg : Bus::Message)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#handled_count-instance-method" class="signature"><strong>#handled_count</strong></a>
+        
+          <div class="summary"><p>Return the number of times that this handler has handled a message.</p></div>
         
       </li>
     
@@ -226,6 +240,8 @@
     
       <li class="entry-summary">
         <a href="#will_handle?(msg)-instance-method" class="signature"><strong>#will_handle?</strong>(msg)</a>
+        
+          <div class="summary"><p>This method determines if the handler will handle the message.</p></div>
         
       </li>
     
@@ -370,6 +386,25 @@ informed decisions about whether or not they can handle the message.</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="evaluated_count-instance-method">
+      <div class="signature">
+        
+        def <strong>evaluated_count</strong>
+
+        <a class="method-permalink" href="#evaluated_count-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Return the number of times that this handler has evaluated a message.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="handle(msg:Bus::Message)-instance-method">
       <div class="signature">
         abstract 
@@ -377,6 +412,25 @@ informed decisions about whether or not they can handle the message.</p>
 
         <a class="method-permalink" href="#handle(msg:Bus::Message)-instance-method">#</a>
       </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="handled_count-instance-method">
+      <div class="signature">
+        
+        def <strong>handled_count</strong>
+
+        <a class="method-permalink" href="#handled_count-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Return the number of times that this handler has handled a message.</p>
+        </div>
       
       <br/>
       <div>
@@ -419,6 +473,14 @@ informed decisions about whether or not they can handle the message.</p>
 
         <a class="method-permalink" href="#will_handle?(msg)-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>This method determines if the handler will handle the message. It
+checks <code><a href="../Bus/Handler.html#can_handle?(msg)-instance-method">#can_handle?</a></code> to see if the handler is able to handle the
+message, and <code><a href="../Bus/Handler.html#authorized_to_handle?(msg)-instance-method">#authorized_to_handle?</a></code> to see if the handler has
+permission to handle the message.</p>
+        </div>
       
       <br/>
       <div>

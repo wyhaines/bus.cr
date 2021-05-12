@@ -146,6 +146,16 @@
 
 <p>By default, if there is a tie, the bus picks a handler at random to receive the message. The other options are to just go with whichever handler happens to be first in the list, or to send messages to all handlers.</p>
 
+<h2><a id="thread-safety" class="anchor" href="#thread-safety">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Thread Safety</h2>
+
+<p>The Bus implementation should be thread safe, as should be the CSUUID and SplayTreMap implementations, but there are parts of Crystal that are not currently thread safe, so your mileage may vary.</p>
+
+<p>For instance, it is possible to eke out a little more performance by replacing all of the SplayTreeMap usage with Hash, but under multithreaded conditions, the Hash can exhibit catastrophic failures, particularly in combination with <code>--release</code>. The SplayTreeMap does not exhibit these failures, and future developments with it may make it faster than the Hash for it's intended purpose (as a cache of sorts), so it remains in use.</p>
+
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -172,7 +182,36 @@
 
 <pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;bus&quot;</span></code></pre>
 
-<p><span class="flag orange">TODO</span>  Write usage instructions here</p>
+<p>bus = Bus.new</p>
+
+<p>class TestHandler &lt; Bus::Handler
+  def initialize(</p>
+
+<pre><code class="language-crystal">@bus : <span class="t">Bus</span>,
+tags : <span class="t">Array</span>(<span class="t">String</span>) <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>,
+@force : <span class="t">Bool</span>? <span class="o">=</span> <span class="n">nil</span></code></pre>
+
+<p>)</p>
+
+<pre><code class="language-crystal"><span class="k">super</span>(@bus, tags)</code></pre>
+
+<p>end</p>
+
+<p>def evaluate(msg)</p>
+
+<pre><code class="language-crystal">ppl <span class="o">=</span> @pipeline
+
+msg.send_evaluation(receiver: ppl.origin, force: @force) <span class="k">if</span> ppl</code></pre>
+
+<p>end</p>
+
+<p>def handle(msg)</p>
+
+<pre><code class="language-crystal">msg.body <span class="o">&lt;&lt;</span> <span class="s">&quot;Handled by </span><span class="i">#{</span><span class="k">self</span><span class="i">}</span><span class="s">&quot;</span>
+<span class="t">ResultsChannel</span>.send(msg)</code></pre>
+
+<p>end
+end</p>
 
 <h2><a id="development" class="anchor" href="#development">
   <svg class="octicon-link" aria-hidden="true">

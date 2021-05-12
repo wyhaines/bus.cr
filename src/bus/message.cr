@@ -14,14 +14,13 @@ class Bus
     getter tags : Array(String)
     getter parameters : Hash(String, String)
     getter origin : String?
-    getter pipeline : Pipeline(Message)
+    property pipeline : Pipeline(Message)?
     getter uuid : CSUUID
     getter strategy : Strategy
     property evaluated : Bool = false
 
     def initialize(
-      @pipeline : Pipeline(Message),
-      # @bus : Bus,
+      @pipeline : Pipeline(Message)? = nil,
       @body : Array(String) = [""],
       @tags : Array(String) = [] of String,
       @parameters : Hash(String, String) = Hash(String, String).new,
@@ -32,8 +31,20 @@ class Bus
     end
 
     def initialize(
-      @pipeline : Pipeline(Message),
+      bus : Bus,
+      @body : Array(String) = [""],
+      @tags : Array(String) = [] of String,
+      @parameters : Hash(String, String) = Hash(String, String).new,
+      @origin : String? = nil,
+      @uuid : CSUUID = CSUUID.new,
+      @strategy : Strategy = Strategy::RandomWinner
+    )
+      @pipeline = bus.pipeline
+    end
+
+    def initialize(
       body : String,
+      @pipeline : Pipeline(Message)? = nil,
       @tags : Array(String) = [] of String,
       @parameters : Hash(String, String) = Hash(String, String).new,
       @origin : String? = nil,
@@ -43,8 +54,22 @@ class Bus
       @body = [body]
     end
 
+    def initialize(
+      bus : Bus,
+      body : String,
+      @tags : Array(String) = [] of String,
+      @parameters : Hash(String, String) = Hash(String, String).new,
+      @origin : String? = nil,
+      @uuid : CSUUID = CSUUID.new,
+      @strategy : Strategy = Strategy::RandomWinner
+    )
+      @pipeline = bus.pipeline
+      @body = [body]
+    end
+
     private def reply_impl(message : Message)
-      @pipeline.send(message)
+      ppl = @pipeline
+      ppl && ppl.send(message)
     end
 
     def reply(message : Message)
@@ -52,23 +77,23 @@ class Bus
     end
 
     def reply(
-      body = "",
+      body : String = "",
       parameters : Hash(String, String) = Hash(String, String).new,
-      tags = [] of String
+      tags : Array(String) = [] of String
     )
       local_origin = @origin
       tags << local_origin if !local_origin.nil?
       reply(
         body: [body],
         parameters: parameters,
-        tags: tags
+        tags: tags,
       )
     end
 
     def reply(
-      body = [""],
+      body : Array(String) = [""],
       parameters : Hash(String, String) = Hash(String, String).new,
-      tags = [] of String
+      tags : Array(String) = [] of String
     )
       local_origin = @origin
       tags << local_origin if !local_origin.nil?
@@ -78,7 +103,7 @@ class Bus
           parameters: parameters,
           tags: tags,
           origin: origin,
-          pipeline: @pipeline
+          pipeline: @pipeline,
         )
       )
     end

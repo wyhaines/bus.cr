@@ -6,19 +6,28 @@ class Bus
     @listener_proc : Fiber? = nil
     @handle_counter : Atomic(UInt64) = Atomic.new(0_u64)
     @evaluate_counter : Atomic(UInt64) = Atomic.new(0_u64)
-    getter bus : Bus
+    @force : Bool? = nil
+    getter bus : Bus?
 
     def initialize(
-      @bus : Bus,
-      tags : Array(String) = [] of String
+      @bus : Bus? = nil,
+      tags : Array(String) = [] of String,
+      @force = nil
     )
+      @pipeline = register_handler(tags) if @bus
+    end
+
+    def subscribe(bus : Bus)
+      @bus = bus
       @pipeline = register_handler(tags)
     end
 
     private def register_handler(tags : Array(String))
-      @bus.subscribe(
-        tags: ["handler", "handler:#{self.class.name}"] + tags
-      )
+      @bus.try do |bus|
+        bus.subscribe(
+          tags: ["handler", "handler:#{self.class.name}"] + tags
+        )
+      end
     end
 
     def run
@@ -26,7 +35,11 @@ class Bus
     end
 
     # All implementations of
-    abstract def evaluate(msg : Bus::Message)
+    def evaluate(msg : Bus::Message)
+      ppl = @pipeline
+      msg.send_evaluation(receiver: ppl.origin, force: @force) if ppl
+    end
+
     abstract def handle(msg : Bus::Message)
 
     # This method determines if the handler will handle the message. It

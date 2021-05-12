@@ -82,12 +82,11 @@ describe Bus::Handler do
     iterations = 10000
     spawn(name: "Benchmark Sender") do
       iterations.times do |count|
-        message = bus.message(
+        bus.send(
           body: "Benchmark message #{count}",
           tags: ["handler"],
           strategy: Bus::Message::Strategy::RandomWinner
         )
-        bus.send(message)
       end
     end
 

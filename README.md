@@ -52,28 +52,104 @@ For instance, it is possible to eke out a little more performance by replacing a
 require "bus"
 ```
 
+Create a new Bus.
+
+```crystal
 bus = Bus.new
+```
 
+Create a subclass of Bus::Handler to handle messages.
+
+```crystal
 class TestHandler < Bus::Handler
-  def initialize(
-    @bus : Bus,
-    tags : Array(String) = [] of String,
-    @force : Bool? = nil
-  )
-    super(@bus, tags)
-  end
-
-  def evaluate(msg)
-    ppl = @pipeline
-
-    msg.send_evaluation(receiver: ppl.origin, force: @force) if ppl
-  end
+  ResultsChannel = Bus::Pipeline(Bus::Message).new(10)
 
   def handle(msg)
     msg.body << "Handled by #{self}"
     ResultsChannel.send(msg)
   end
 end
+```
+
+Create a handler instance, and connect it to the bus all in one line.
+
+```crystal
+handler_1 = TestHandler.new(bus: bus, tags: ["handler", "handler1"])
+```
+
+Alternatively, do it as separate steps.
+
+```crystal
+handler_2 = TestHandler.new(tags: ["handler", "handler2"])
+handler_2.subscribe(bus)
+```
+
+Create a message, targetted at all of the handlers with the `handler` tag.
+
+```crystal
+message = Bus::Message.new(
+  body: ["One or more","Strings of text"],
+  tags: ["handler"],
+  parameters: {
+    "hash" => "of",
+    "arbitrary" => "data"
+  }
+)
+```
+
+And send it.
+
+```crystal
+bus.send(message)
+```
+
+Alternatively, do it all from the `Bus`.
+
+```crystal
+bus.send(
+  body: ["One or more","Strings of text"],
+  tags: ["handler"],
+  parameters: {
+    "hash" => "of",
+    "arbitrary" => "data"
+  }
+)
+```
+
+In your handlers, you probably want to implement an `#evaluate` method to determine relevance and confidence for the handler. The `origin` on a pipeline is a UUID that uniquely identifies it. When sending an evaluation, the `receiver` parameter is the origin of the Pipeline that received (and is responding to) the message.
+
+```crystal
+class TestHandler < Bus::Handler
+  def evaluate(msg)
+    ppl = @pipeline
+
+    if will_handle?(msg)
+      msg.send_evaluation(
+        relevance: 0,
+        certainty: 1000000,
+        receiver: ppl.origin
+      ) if ppl
+    else
+      msg.send_evaluation(
+        relevance: -1000000,
+        certainty: -1000000,
+        receiver: ppl.origin
+      ) if ppl
+    end
+  end
+end
+
+```
+
+A handler that has received a message can send a message that will go back to the handler that originally sent the message:
+
+```crystal
+message.reply(
+  body: "Confirmation",
+  parameters: {"timestamp" => Time.local.to_s}
+)
+```
+
 ## Development
 
 TODO: Write development instructions here

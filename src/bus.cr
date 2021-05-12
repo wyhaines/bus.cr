@@ -13,6 +13,7 @@ class Bus
   # hash in single threaded, but it works just fine in multithreaded mode,
   # so this implementation is going to stick with the SplayTreeMap for now.
   getter subscriptions : SplayTreeMap(String, Hash(Pipeline(Message), Bool))
+  getter pipeline : Pipeline(Message)
 
   def initialize
     @pending_evaluation = SplayTreeMap(String, Evaluation).new
@@ -134,8 +135,30 @@ class Bus
     )
   end
 
+  def send(
+    body : Array(String) | String,
+    origin : String? = nil,
+    tags : Array(String) = [] of String,
+    parameters : Hash(String, String) = Hash(String, String).new,
+    strategy : Message::Strategy = Message::Strategy::RandomWinner
+  )
+    send(
+      message(
+        body: body,
+        origin: origin,
+        tags: tags,
+        parameters: parameters,
+        strategy: strategy
+      )
+    )
+  end
+
   # Send a message to the subscribers
   def send(message : Message)
+    if message.pipeline.nil?
+      message.pipeline = @pipeline
+    end
+
     # It's quite possible for tag combinations to target the same
     # recipient via multiple tags. In those cases the system should
     # only send a given message one time, so the following code builds

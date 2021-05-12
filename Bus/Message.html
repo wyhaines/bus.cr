@@ -163,12 +163,22 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(pipeline:Pipeline(Message),body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method" class="signature"><strong>.new</strong>(pipeline : Pipeline(Message), body : Array(String) = [<span class="s">&quot;&quot;</span>], tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : Strategy = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)</a>
+        <a href="#new(pipeline:Pipeline(Message)?=nil,body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method" class="signature"><strong>.new</strong>(pipeline : Pipeline(Message)? = <span class="n">nil</span>, body : Array(String) = [<span class="s">&quot;&quot;</span>], tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : Strategy = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(pipeline:Pipeline(Message),body:String,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method" class="signature"><strong>.new</strong>(pipeline : Pipeline(Message), body : String, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : Strategy = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)</a>
+        <a href="#new(bus:Bus,body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method" class="signature"><strong>.new</strong>(bus : Bus, body : Array(String) = [<span class="s">&quot;&quot;</span>], tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : Strategy = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new(body:String,pipeline:Pipeline(Message)?=nil,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method" class="signature"><strong>.new</strong>(body : String, pipeline : Pipeline(Message)? = <span class="n">nil</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : Strategy = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new(bus:Bus,body:String,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method" class="signature"><strong>.new</strong>(bus : Bus, body : String, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : Strategy = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)</a>
         
       </li>
     
@@ -214,7 +224,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#pipeline:Pipeline(Message)-instance-method" class="signature"><strong>#pipeline</strong> : Pipeline(Message)</a>
+        <a href="#pipeline:Pipeline(Message)?-instance-method" class="signature"><strong>#pipeline</strong> : Pipeline(Message)?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pipeline=(pipeline:Pipeline(Message)?)-instance-method" class="signature"><strong>#pipeline=</strong>(pipeline : Pipeline(Message)?)</a>
         
       </li>
     
@@ -224,7 +239,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#reply(body=[&quot;&quot;],parameters:Hash(String,String)=Hash(String,String).new,tags=[]ofString)-instance-method" class="signature"><strong>#reply</strong>(body = [<span class="s">&quot;&quot;</span>], parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, tags = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</a>
+        <a href="#reply(body:String=&quot;&quot;,parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method" class="signature"><strong>#reply</strong>(body : String = <span class="s">&quot;&quot;</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply(body:Array(String)=[&quot;&quot;],parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method" class="signature"><strong>#reply</strong>(body : Array(String) = [<span class="s">&quot;&quot;</span>], parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</a>
         
       </li>
     
@@ -298,12 +318,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(pipeline:Pipeline(Message),body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">
+    <div class="entry-detail" id="new(pipeline:Pipeline(Message)?=nil,body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(pipeline : <a href="../Bus/Pipeline.html">Pipeline</a>(<a href="../Bus/Message.html">Message</a>), body : Array(String) = [<span class="s">&quot;&quot;</span>], tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : <a href="../Bus/Message/Strategy.html">Strategy</a> = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)
+        def self.<strong>new</strong>(pipeline : <a href="../Bus/Pipeline.html">Pipeline</a>(<a href="../Bus/Message.html">Message</a>)? = <span class="n">nil</span>, body : Array(String) = [<span class="s">&quot;&quot;</span>], tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : <a href="../Bus/Message/Strategy.html">Strategy</a> = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)
 
-        <a class="method-permalink" href="#new(pipeline:Pipeline(Message),body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">#</a>
+        <a class="method-permalink" href="#new(pipeline:Pipeline(Message)?=nil,body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">#</a>
       </div>
       
       <br/>
@@ -312,12 +332,40 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="new(pipeline:Pipeline(Message),body:String,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">
+    <div class="entry-detail" id="new(bus:Bus,body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(pipeline : <a href="../Bus/Pipeline.html">Pipeline</a>(<a href="../Bus/Message.html">Message</a>), body : String, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : <a href="../Bus/Message/Strategy.html">Strategy</a> = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)
+        def self.<strong>new</strong>(bus : <a href="../Bus.html">Bus</a>, body : Array(String) = [<span class="s">&quot;&quot;</span>], tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : <a href="../Bus/Message/Strategy.html">Strategy</a> = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)
 
-        <a class="method-permalink" href="#new(pipeline:Pipeline(Message),body:String,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">#</a>
+        <a class="method-permalink" href="#new(bus:Bus,body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(body:String,pipeline:Pipeline(Message)?=nil,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(body : String, pipeline : <a href="../Bus/Pipeline.html">Pipeline</a>(<a href="../Bus/Message.html">Message</a>)? = <span class="n">nil</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : <a href="../Bus/Message/Strategy.html">Strategy</a> = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)
+
+        <a class="method-permalink" href="#new(body:String,pipeline:Pipeline(Message)?=nil,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(bus:Bus,body:String,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(bus : <a href="../Bus.html">Bus</a>, body : String, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : <a href="../Bus/Message/Strategy.html">Strategy</a> = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)
+
+        <a class="method-permalink" href="#new(bus:Bus,body:String,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">#</a>
       </div>
       
       <br/>
@@ -410,12 +458,26 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="pipeline:Pipeline(Message)-instance-method">
+    <div class="entry-detail" id="pipeline:Pipeline(Message)?-instance-method">
       <div class="signature">
         
-        def <strong>pipeline</strong> : <a href="../Bus/Pipeline.html">Pipeline</a>(<a href="../Bus/Message.html">Message</a>)
+        def <strong>pipeline</strong> : <a href="../Bus/Pipeline.html">Pipeline</a>(<a href="../Bus/Message.html">Message</a>)?
 
-        <a class="method-permalink" href="#pipeline:Pipeline(Message)-instance-method">#</a>
+        <a class="method-permalink" href="#pipeline:Pipeline(Message)?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pipeline=(pipeline:Pipeline(Message)?)-instance-method">
+      <div class="signature">
+        
+        def <strong>pipeline=</strong>(pipeline : <a href="../Bus/Pipeline.html">Pipeline</a>(<a href="../Bus/Message.html">Message</a>)?)
+
+        <a class="method-permalink" href="#pipeline=(pipeline:Pipeline(Message)?)-instance-method">#</a>
       </div>
       
       <br/>
@@ -438,12 +500,26 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="reply(body=[&quot;&quot;],parameters:Hash(String,String)=Hash(String,String).new,tags=[]ofString)-instance-method">
+    <div class="entry-detail" id="reply(body:String=&quot;&quot;,parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method">
       <div class="signature">
         
-        def <strong>reply</strong>(body = [<span class="s">&quot;&quot;</span>], parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, tags = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)
+        def <strong>reply</strong>(body : String = <span class="s">&quot;&quot;</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)
 
-        <a class="method-permalink" href="#reply(body=[&quot;&quot;],parameters:Hash(String,String)=Hash(String,String).new,tags=[]ofString)-instance-method">#</a>
+        <a class="method-permalink" href="#reply(body:String=&quot;&quot;,parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply(body:Array(String)=[&quot;&quot;],parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply</strong>(body : Array(String) = [<span class="s">&quot;&quot;</span>], parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)
+
+        <a class="method-permalink" href="#reply(body:Array(String)=[&quot;&quot;],parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method">#</a>
       </div>
       
       <br/>

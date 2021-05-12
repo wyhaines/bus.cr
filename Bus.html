@@ -271,6 +271,16 @@ original sender.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#pipeline:Pipeline(Message)-instance-method" class="signature"><strong>#pipeline</strong> : Pipeline(Message)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send(body:Array(String)%7CString,origin:String?=nil,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,strategy:Message::Strategy=Message::Strategy::RandomWinner)-instance-method" class="signature"><strong>#send</strong>(body : Array(String) | String, origin : String? = <span class="n">nil</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, strategy : Message::Strategy = <span class="t">Message</span><span class="t">::</span><span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#send(message:Message)-instance-method" class="signature"><strong>#send</strong>(message : Message)</a>
         
           <div class="summary"><p>Send a message to the subscribers</p></div>
@@ -411,6 +421,34 @@ original sender.</p>
           
           <p>Generate a random UUID that does not already exist in the subscriptions.</p>
         </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pipeline:Pipeline(Message)-instance-method">
+      <div class="signature">
+        
+        def <strong>pipeline</strong> : <a href="Bus/Pipeline.html">Pipeline</a>(<a href="Bus/Message.html">Message</a>)
+
+        <a class="method-permalink" href="#pipeline:Pipeline(Message)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send(body:Array(String)|String,origin:String?=nil,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,strategy:Message::Strategy=Message::Strategy::RandomWinner)-instance-method">
+      <div class="signature">
+        
+        def <strong>send</strong>(body : Array(String) | String, origin : String? = <span class="n">nil</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, strategy : <a href="Bus/Message/Strategy.html">Message::Strategy</a> = <span class="t">Message</span><span class="t">::</span><span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)
+
+        <a class="method-permalink" href="#send(body:Array(String)%7CString,origin:String?=nil,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,strategy:Message::Strategy=Message::Strategy::RandomWinner)-instance-method">#</a>
+      </div>
       
       <br/>
       <div>

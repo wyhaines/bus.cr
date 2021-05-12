@@ -163,7 +163,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(bus:Bus,tags:Array(String)=[]ofString)-class-method" class="signature"><strong>.new</strong>(bus : Bus, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</a>
+        <a href="#new(bus:Bus?=nil,tags:Array(String)=[]ofString,force=nil)-class-method" class="signature"><strong>.new</strong>(bus : Bus? = <span class="n">nil</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, force = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -191,7 +191,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#bus:Bus-instance-method" class="signature"><strong>#bus</strong> : Bus</a>
+        <a href="#bus:Bus?-instance-method" class="signature"><strong>#bus</strong> : Bus?</a>
         
       </li>
     
@@ -235,6 +235,11 @@
     
       <li class="entry-summary">
         <a href="#run-instance-method" class="signature"><strong>#run</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#subscribe(bus:Bus)-instance-method" class="signature"><strong>#subscribe</strong>(bus : Bus)</a>
         
       </li>
     
@@ -285,12 +290,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(bus:Bus,tags:Array(String)=[]ofString)-class-method">
+    <div class="entry-detail" id="new(bus:Bus?=nil,tags:Array(String)=[]ofString,force=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(bus : <a href="../Bus.html">Bus</a>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)
+        def self.<strong>new</strong>(bus : <a href="../Bus.html">Bus</a>? = <span class="n">nil</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, force = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(bus:Bus,tags:Array(String)=[]ofString)-class-method">#</a>
+        <a class="method-permalink" href="#new(bus:Bus?=nil,tags:Array(String)=[]ofString,force=nil)-class-method">#</a>
       </div>
       
       <br/>
@@ -333,12 +338,12 @@ to the given handler.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="bus:Bus-instance-method">
+    <div class="entry-detail" id="bus:Bus?-instance-method">
       <div class="signature">
         
-        def <strong>bus</strong> : <a href="../Bus.html">Bus</a>
+        def <strong>bus</strong> : <a href="../Bus.html">Bus</a>?
 
-        <a class="method-permalink" href="#bus:Bus-instance-method">#</a>
+        <a class="method-permalink" href="#bus:Bus?-instance-method">#</a>
       </div>
       
       <br/>
@@ -369,7 +374,7 @@ informed decisions about whether or not they can handle the message.</p>
   
     <div class="entry-detail" id="evaluate(msg:Bus::Message)-instance-method">
       <div class="signature">
-        abstract 
+        
         def <strong>evaluate</strong>(msg : <a href="../Bus/Message.html">Bus::Message</a>)
 
         <a class="method-permalink" href="#evaluate(msg:Bus::Message)-instance-method">#</a>
@@ -458,6 +463,20 @@ informed decisions about whether or not they can handle the message.</p>
         def <strong>run</strong>
 
         <a class="method-permalink" href="#run-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="subscribe(bus:Bus)-instance-method">
+      <div class="signature">
+        
+        def <strong>subscribe</strong>(bus : <a href="../Bus.html">Bus</a>)
+
+        <a class="method-permalink" href="#subscribe(bus:Bus)-instance-method">#</a>
       </div>
       
       <br/>

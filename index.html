@@ -182,36 +182,85 @@
 
 <pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;bus&quot;</span></code></pre>
 
-<p>bus = Bus.new</p>
+<p>Create a new Bus.</p>
 
-<p>class TestHandler &lt; Bus::Handler
-  def initialize(</p>
+<pre><code class="language-crystal">bus <span class="o">=</span> <span class="t">Bus</span>.<span class="k">new</span></code></pre>
 
-<pre><code class="language-crystal">@bus : <span class="t">Bus</span>,
-tags : <span class="t">Array</span>(<span class="t">String</span>) <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>,
-@force : <span class="t">Bool</span>? <span class="o">=</span> <span class="n">nil</span></code></pre>
+<p>Create a subclass of Bus::Handler to handle messages.</p>
 
-<p>)</p>
+<pre><code class="language-crystal"><span class="k">class</span> <span class="t">TestHandler</span> <span class="o">&lt;</span> <span class="t">Bus</span><span class="t">::</span><span class="t">Handler</span>
+  <span class="t">ResultsChannel</span> <span class="o">=</span> <span class="t">Bus</span><span class="t">::</span><span class="t">Pipeline</span>(<span class="t">Bus</span><span class="t">::</span><span class="t">Message</span>).<span class="k">new</span>(<span class="n">10</span>)
 
-<pre><code class="language-crystal"><span class="k">super</span>(@bus, tags)</code></pre>
+  <span class="k">def</span> <span class="m">handle</span>(msg)
+    msg.body <span class="o">&lt;&lt;</span> <span class="s">&quot;Handled by </span><span class="i">#{</span><span class="k">self</span><span class="i">}</span><span class="s">&quot;</span>
+    <span class="t">ResultsChannel</span>.send(msg)
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
 
-<p>end</p>
+<p>Create a handler instance, and connect it to the bus all in one line.</p>
 
-<p>def evaluate(msg)</p>
+<pre><code class="language-crystal">handler_1 <span class="o">=</span> <span class="t">TestHandler</span>.<span class="k">new</span>(bus: bus, tags: [<span class="s">&quot;handler&quot;</span>, <span class="s">&quot;handler1&quot;</span>])</code></pre>
 
-<pre><code class="language-crystal">ppl <span class="o">=</span> @pipeline
+<p>Alternatively, do it as separate steps.</p>
 
-msg.send_evaluation(receiver: ppl.origin, force: @force) <span class="k">if</span> ppl</code></pre>
+<pre><code class="language-crystal">handler_2 <span class="o">=</span> <span class="t">TestHandler</span>.<span class="k">new</span>(tags: [<span class="s">&quot;handler&quot;</span>, <span class="s">&quot;handler2&quot;</span>])
+handler_2.subscribe(bus)</code></pre>
 
-<p>end</p>
+<p>Create a message, targetted at all of the handlers with the <code>handler</code> tag.</p>
 
-<p>def handle(msg)</p>
+<pre><code class="language-crystal">message <span class="o">=</span> <span class="t">Bus</span><span class="t">::</span><span class="t">Message</span>.<span class="k">new</span>(
+  body: [<span class="s">&quot;One or more&quot;</span>,<span class="s">&quot;Strings of text&quot;</span>],
+  tags: [<span class="s">&quot;handler&quot;</span>],
+  parameters: {
+    <span class="s">&quot;hash&quot;</span> => <span class="s">&quot;of&quot;</span>,
+    <span class="s">&quot;arbitrary&quot;</span> => <span class="s">&quot;data&quot;</span>
+  }
+)</code></pre>
 
-<pre><code class="language-crystal">msg.body <span class="o">&lt;&lt;</span> <span class="s">&quot;Handled by </span><span class="i">#{</span><span class="k">self</span><span class="i">}</span><span class="s">&quot;</span>
-<span class="t">ResultsChannel</span>.send(msg)</code></pre>
+<p>And send it.</p>
 
-<p>end
-end</p>
+<pre><code class="language-crystal">bus.send(message)</code></pre>
+
+<p>Alternatively, do it all from the <code><a href="Bus.html">Bus</a></code>.</p>
+
+<pre><code class="language-crystal">bus.send(
+  body: [<span class="s">&quot;One or more&quot;</span>,<span class="s">&quot;Strings of text&quot;</span>],
+  tags: [<span class="s">&quot;handler&quot;</span>],
+  parameters: {
+    <span class="s">&quot;hash&quot;</span> => <span class="s">&quot;of&quot;</span>,
+    <span class="s">&quot;arbitrary&quot;</span> => <span class="s">&quot;data&quot;</span>
+  }
+)</code></pre>
+
+<p>In your handlers, you probably want to implement an <code>#evaluate</code> method to determine relevance and confidence for the handler. The <code>origin</code> on a pipeline is a UUID that uniquely identifies it. When sending an evaluation, the <code>receiver</code> parameter is the origin of the Pipeline that received (and is responding to) the message.</p>
+
+<pre><code class="language-crystal"><span class="k">class</span> <span class="t">TestHandler</span> <span class="o">&lt;</span> <span class="t">Bus</span><span class="t">::</span><span class="t">Handler</span>
+  <span class="k">def</span> <span class="m">evaluate</span>(msg)
+    ppl <span class="o">=</span> @pipeline
+
+    <span class="k">if</span> will_handle?(msg)
+      msg.send_evaluation(
+        relevance: <span class="n">0</span>,
+        certainty: <span class="n">1000000</span>,
+        receiver: ppl.origin
+      ) <span class="k">if</span> ppl
+    <span class="k">else</span>
+      msg.send_evaluation(
+        relevance: <span class="n">-1000000</span>,
+        certainty: <span class="n">-1000000</span>,
+        receiver: ppl.origin
+      ) <span class="k">if</span> ppl
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>A handler that has received a message can send a message that will go back to the handler that originally sent the message:</p>
+
+<pre><code class="language-crystal">message.reply(
+  body: <span class="s">&quot;Confirmation&quot;</span>,
+  parameters: {<span class="s">&quot;timestamp&quot;</span> => <span class="t">Time</span>.local.to_s}
+)</code></pre>
 
 <h2><a id="development" class="anchor" href="#development">
   <svg class="octicon-link" aria-hidden="true">

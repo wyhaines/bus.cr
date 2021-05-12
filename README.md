@@ -28,6 +28,12 @@ Everything that opts out has no chance of recieving a message. Everything that o
 All other handlers will be sorted by relevance and confidence, from high to low. The set of potential winners is all of the handlers who have the same highest relevance and confidence.
 
 By default, if there is a tie, the bus picks a handler at random to receive the message. The other options are to just go with whichever handler happens to be first in the list, or to send messages to all handlers.
+
+## Thread Safety
+
+The Bus implementation should be thread safe, as should be the CSUUID and SplayTreMap implementations, but there are parts of Crystal that are not currently thread safe, so your mileage may vary.
+
+For instance, it is possible to eke out a little more performance by replacing all of the SplayTreeMap usage with Hash, but under multithreaded conditions, the Hash can exhibit catastrophic failures, particularly in combination with `--release`. The SplayTreeMap does not exhibit these failures, and future developments with it may make it faster than the Hash for it's intended purpose (as a cache of sorts), so it remains in use.
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
@@ -46,8 +52,28 @@ By default, if there is a tie, the bus picks a handler at random to receive the 
 require "bus"
 ```
 
-TODO: Write usage instructions here
+bus = Bus.new
 
+class TestHandler < Bus::Handler
+  def initialize(
+    @bus : Bus,
+    tags : Array(String) = [] of String,
+    @force : Bool? = nil
+  )
+    super(@bus, tags)
+  end
+
+  def evaluate(msg)
+    ppl = @pipeline
+
+    msg.send_evaluation(receiver: ppl.origin, force: @force) if ppl
+  end
+
+  def handle(msg)
+    msg.body << "Handled by #{self}"
+    ResultsChannel.send(msg)
+  end
+end
 ## Development
 
 TODO: Write development instructions here

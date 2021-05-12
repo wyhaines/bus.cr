@@ -76,7 +76,7 @@ describe Bus::Handler do
     received[0].body.should eq message.body
   end
 
-  it "can send create, send, and receive a whole bunch of messages really fast" do
+  it "can send create, send, and receive many messages through multiple handlers to a single winner" do
     start = Time.monotonic
     flag = Channel(Nil).new
     iterations = 10000
@@ -101,6 +101,34 @@ describe Bus::Handler do
     flag.receive
     finish = Time.monotonic
 
-    puts "\n\nMessages per second (sent, evaluated, and handled): #{iterations / (finish - start).total_seconds}"
+    puts "\n\nMessages per second (#{iterations} messages -> #{iterations} winners): #{iterations / (finish - start).total_seconds}"
+  end
+
+  it "can send create, send, and receive many messages through many handlers" do
+    start = Time.monotonic
+    flag = Channel(Nil).new
+    iterations = 10000
+    spawn(name: "Benchmark Sender") do
+      iterations.times do |count|
+        message = bus.message(
+          body: "Benchmark message #{count}",
+          tags: ["handler"],
+          strategy: Bus::Message::Strategy::All
+        )
+        bus.send(message)
+      end
+    end
+
+    spawn(name: "Benchmark receiver") do
+      (iterations * 3).times do |count|
+        TestHandler::ResultsChannel.receive
+      end
+      flag.send(nil)
+    end
+
+    flag.receive
+    finish = Time.monotonic
+
+    puts "\n\nMessages per second (#{iterations} messages -> #{3 * iterations} winners): #{iterations / (finish - start).total_seconds}"
   end
 end

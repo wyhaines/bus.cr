@@ -66,7 +66,7 @@ class Bus
     # This also evaluates to true if the timeout period has been exceeded.
     def finished?
       # timed_out? || !@evaluations.values.any? { |v| v.nil? }
-      !@evaluations.values.any? { |v| v.nil? }
+      !@evaluations.values.any?(Nil)
     end
 
     # Determine the winners of the evaluation. The algorithm is as follows:
@@ -102,7 +102,7 @@ class Bus
         sorted = evl.select do |pair|
           pl = pair.last
           pl && pl.force.nil?
-        end.sort_by { |pair| pair.last.not_nil! }
+        end.sort_by!(&.last.not_nil!)
 
         top_winner = sorted.first.last.not_nil!
 

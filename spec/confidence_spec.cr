@@ -37,7 +37,7 @@ describe Bus::Confidence do
     ary << Bus::Confidence.new(relevance: 2, certainty: 1000000)
     ary << Bus::Confidence.new(relevance: 1, certainty: 1000000)
 
-    sorted_ary = ary.sort.reverse
+    sorted_ary = ary.sort.reverse!
 
     sorted_ary[0].relevance.should eq 2
     sorted_ary[0].certainty.should eq 1000000

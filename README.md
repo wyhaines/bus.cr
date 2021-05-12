@@ -1,7 +1,33 @@
 # bus
 
-TODO: Write a description here
+![CSUUID CI](https://img.shields.io/github/workflow/status/wyhaines/bus.cr/bus.cr%20CI?style=for-the-badge&logo=GitHub)
+[![GitHub release](https://img.shields.io/github/release/wyhaines/CSUUID.cr.svg?style=for-the-badge)](https://github.com/wyhaines/bus.cr/releases)
+![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/wyhaines/bus.cr/latest?style=for-the-badge)
 
+
+This class implements an in-process pubsub style message bus.
+
+The bus receives messages and routes them to all interested handlers. Additionally, the bus is capable of dispatching the message to only a subset of potential handlers, based on a best-fit, or to all eligible handlers.
+
+## Handler Selection & Winner Selection Protocol
+
+Imagine that there are multiple subscribers for a given type of message (a given tag), but the message being dispatched should only be handled by a single subscriber. This implementation puts the responsibility on each handler to respond to an "evaluate" request on a message on two axex.
+
+The first axis is relevance, which is a measure of how appropriate the subject of the message is to the purpose of the handler. For example, an HTTP request might be highly relevant to both a static asset handler and an API endpoint, and not at all relevant to a handler that proxies database requests.
+
+The second axis is confidence. It reflects how sure the handler is that it can return a valid response to the message. In the aforementioned examples, a static handler that doesn't have any assets that can fullfill the request would have a very low confidence, while one that does have available assets would have a high confidence. Likewise, the API endpoint handler would return a high confidence if it had an endpoint that matched the request.
+
+When a handler receives a message that hasn't been evaluated, the handler should return an evaluation response that indicates it's relevance and confidence.
+
+After the bus has received evaluation responses from all of the handlers which initially received the message, it will select one or more *winners* which will each be passed the message for handling.
+
+Handlers can choose to arbitrarily opt in to receiving a message, or to opt out of consideration.
+
+Everything that opts out has no chance of recieving a message. Everything that opts in will always receive the message (something which may be useful for a logging handler).
+
+All other handlers will be sorted by relevance and confidence, from high to low. The set of potential winners is all of the handlers who have the same highest relevance and confidence.
+
+By default, if there is a tie, the bus picks a handler at random to receive the message. The other options are to just go with whichever handler happens to be first in the list, or to send messages to all handlers.
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
@@ -37,3 +63,6 @@ TODO: Write development instructions here
 ## Contributors
 
 - [Kirk Haines](https://github.com/your-github-user) - creator and maintainer
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/wyhaines/bus.cr?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/wyhaines/bus.cr?style=for-the-badge)

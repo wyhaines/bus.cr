@@ -92,7 +92,7 @@ describe Bus::Handler do
     end
 
     spawn(name: "Benchmark receiver") do
-      iterations.times do |count|
+      iterations.times do
         TestHandler::ResultsChannel.receive
       end
       flag.send(nil)
@@ -120,7 +120,7 @@ describe Bus::Handler do
     end
 
     spawn(name: "Benchmark receiver") do
-      (iterations * 3).times do |count|
+      (iterations * 3).times do
         TestHandler::ResultsChannel.receive
       end
       flag.send(nil)

@@ -71,7 +71,6 @@ describe Bus::Message do
   end
 
   it "reply should send a reply" do
-    receiver = CSUUID.new.to_s
     first_message = Bus::Message.new(pipeline: pipeline, body: "first message")
     first_message.reply(
       body: "second message"

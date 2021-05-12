@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.36.1">
+<meta name="crystal_docs.project_version" content="0.1.0">
+<meta name="crystal_docs.project_name" content="bus">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="bus">
+  <title>Bus::Evaluation - bus 0.1.0</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          bus
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.1.0
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="bus/Bus" data-name="bus">
+      <a href="../Bus.html">Bus</a>
+      
+        <ul>
+  
+  <li class=" " data-id="bus/Bus/Confidence" data-name="bus::confidence">
+      <a href="../Bus/Confidence.html">Confidence</a>
+      
+    </li>
+  
+  <li class=" current" data-id="bus/Bus/Evaluation" data-name="bus::evaluation">
+      <a href="../Bus/Evaluation.html">Evaluation</a>
+      
+    </li>
+  
+  <li class=" " data-id="bus/Bus/Handler" data-name="bus::handler">
+      <a href="../Bus/Handler.html">Handler</a>
+      
+    </li>
+  
+  <li class="parent " data-id="bus/Bus/Message" data-name="bus::message">
+      <a href="../Bus/Message.html">Message</a>
+      
+        <ul>
+  
+  <li class=" " data-id="bus/Bus/Message/Strategy" data-name="bus::message::strategy">
+      <a href="../Bus/Message/Strategy.html">Strategy</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="bus/Bus/Pipeline" data-name="bus::pipeline(t)">
+      <a href="../Bus/Pipeline.html">Pipeline</a>
+      
+    </li>
+  
+  <li class=" " data-id="bus/Bus/Version" data-name="bus::version">
+      <a href="../Bus/Version.html">Version</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Bus::Evaluation
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Bus/Evaluation.html">Bus::Evaluation</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      bus/evaluation.cr
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(message,receivers,timeout=10.0)-class-method" class="signature"><strong>.new</strong>(message, receivers, timeout = <span class="n">10.0</span>)</a>
+        
+          <div class="summary"><p>Build an Evaluation object.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#evaluations:Hash(Pipeline(Message),Confidence?)-instance-method" class="signature"><strong>#evaluations</strong> : Hash(Pipeline(Message), Confidence?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#filter_by_strategy(winners)-instance-method" class="signature"><strong>#filter_by_strategy</strong>(winners)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#finished?-instance-method" class="signature"><strong>#finished?</strong></a>
+        
+          <div class="summary"><p>Returns true if evaluations have been received for all of the receivers which were provided when the object was created.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message:Message-instance-method" class="signature"><strong>#message</strong> : Message</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set(receiver:String,relevance:String%7CInt=0,certainty:String%7CInt=0,force:String=&quot;&quot;)-instance-method" class="signature"><strong>#set</strong>(receiver : String, relevance : String | Int = <span class="n">0</span>, certainty : String | Int = <span class="n">0</span>, force : String = <span class="s">&quot;&quot;</span>)</a>
+        
+          <div class="summary"><p>Takes the origin string for a receiver, and the relevance, certainty, and force values, and sets them inside of the Evaluation object.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#start_time:Time::Span-instance-method" class="signature"><strong>#start_time</strong> : Time::Span</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#timed_out?-instance-method" class="signature"><strong>#timed_out?</strong></a>
+        
+          <div class="summary"><p>Determine if this evaluation has timed out.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#timeout:Float64-instance-method" class="signature"><strong>#timeout</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#timeout=(timeout:Float64)-instance-method" class="signature"><strong>#timeout=</strong>(timeout : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#winners-instance-method" class="signature"><strong>#winners</strong></a>
+        
+          <div class="summary"><p>Determine the winners of the evaluation.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(message,receivers,timeout=10.0)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(message, receivers, timeout = <span class="n">10.0</span>)
+
+        <a class="method-permalink" href="#new(message,receivers,timeout=10.0)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Build an Evaluation object. It takes two arguments. The first is the
+message that requires a destination. The second is the list of pipelines
+connecting to the potential receivers for the message.</p>
+
+<p>A lookup table is built that contains the origin string for each pipeline
+as the key, and the pipeline itself as the value. A second hash
+is built which pairs the pipelines to the Confidence objects for
+each receiver.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="evaluations:Hash(Pipeline(Message),Confidence?)-instance-method">
+      <div class="signature">
+        
+        def <strong>evaluations</strong> : Hash(<a href="../Bus/Pipeline.html">Pipeline</a>(<a href="../Bus/Message.html">Message</a>), <a href="../Bus/Confidence.html">Confidence</a>?)
+
+        <a class="method-permalink" href="#evaluations:Hash(Pipeline(Message),Confidence?)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="filter_by_strategy(winners)-instance-method">
+      <div class="signature">
+        
+        def <strong>filter_by_strategy</strong>(winners)
+
+        <a class="method-permalink" href="#filter_by_strategy(winners)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="finished?-instance-method">
+      <div class="signature">
+        
+        def <strong>finished?</strong>
+
+        <a class="method-permalink" href="#finished?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns true if evaluations have been received for all of the
+receivers which were provided when the object was created.
+This also evaluates to true if the timeout period has been exceeded.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message:Message-instance-method">
+      <div class="signature">
+        
+        def <strong>message</strong> : <a href="../Bus/Message.html">Message</a>
+
+        <a class="method-permalink" href="#message:Message-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set(receiver:String,relevance:String|Int=0,certainty:String|Int=0,force:String=&quot;&quot;)-instance-method">
+      <div class="signature">
+        
+        def <strong>set</strong>(receiver : String, relevance : String | Int = <span class="n">0</span>, certainty : String | Int = <span class="n">0</span>, force : String = <span class="s">&quot;&quot;</span>)
+
+        <a class="method-permalink" href="#set(receiver:String,relevance:String%7CInt=0,certainty:String%7CInt=0,force:String=&quot;&quot;)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Takes the origin string for a receiver, and the relevance,
+certainty, and force values, and sets them inside of the Evaluation
+object.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="start_time:Time::Span-instance-method">
+      <div class="signature">
+        
+        def <strong>start_time</strong> : Time::Span
+
+        <a class="method-permalink" href="#start_time:Time::Span-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="timed_out?-instance-method">
+      <div class="signature">
+        
+        def <strong>timed_out?</strong>
+
+        <a class="method-permalink" href="#timed_out?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Determine if this evaluation has timed out. If, for some reason,
+one of the handlers is very slow returning their Confidence, or
+never returns a Confidence, the evaulation should still be
+evaluated using all of the entries that responded by the time that
+the timeout is exceeded.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="timeout:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>timeout</strong> : Float64
+
+        <a class="method-permalink" href="#timeout:Float64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="timeout=(timeout:Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong>timeout=</strong>(timeout : Float64)
+
+        <a class="method-permalink" href="#timeout=(timeout:Float64)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="winners-instance-method">
+      <div class="signature">
+        
+        def <strong>winners</strong>
+
+        <a class="method-permalink" href="#winners-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Determine the winners of the evaluation. The algorithm is as follows:</p>
+
+<ol><li>All receivers with a Confidence <code>force</code> value of false are automatically losers.</li><li>All receivers with a Confidence <code>force</code> value of true are automatically winners.</li><li>For all others are sorted by <code>relevance</code> and then by `certainty.</li><li>Winners are everything with <code>force==true</code> plus everything with the highest <code>relevance</code> and <code>certainty</code>.</li></ol>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.36.1">
+<meta name="crystal_docs.project_version" content="0.1.0">
+<meta name="crystal_docs.project_name" content="bus">
+
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+  <meta name="repository-name" content="bus">
+  <title>Bus - bus 0.1.0</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          bus
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.1.0
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="bus/Bus" data-name="bus">
+      <a href="Bus.html">Bus</a>
+      
+        <ul>
+  
+  <li class=" " data-id="bus/Bus/Confidence" data-name="bus::confidence">
+      <a href="Bus/Confidence.html">Confidence</a>
+      
+    </li>
+  
+  <li class=" " data-id="bus/Bus/Evaluation" data-name="bus::evaluation">
+      <a href="Bus/Evaluation.html">Evaluation</a>
+      
+    </li>
+  
+  <li class=" " data-id="bus/Bus/Handler" data-name="bus::handler">
+      <a href="Bus/Handler.html">Handler</a>
+      
+    </li>
+  
+  <li class="parent " data-id="bus/Bus/Message" data-name="bus::message">
+      <a href="Bus/Message.html">Message</a>
+      
+        <ul>
+  
+  <li class=" " data-id="bus/Bus/Message/Strategy" data-name="bus::message::strategy">
+      <a href="Bus/Message/Strategy.html">Strategy</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="bus/Bus/Pipeline" data-name="bus::pipeline(t)">
+      <a href="Bus/Pipeline.html">Pipeline</a>
+      
+    </li>
+  
+  <li class=" " data-id="bus/Bus/Version" data-name="bus::version">
+      <a href="Bus/Version.html">Version</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Bus
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="Bus.html">Bus</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <h4><a id="" class="anchor" href="#">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a></h4>
+
+<p>A Bus sends messages to interested subscribers. Those subscribers
+can reply to a message. Those replies will be routed back to the
+original sender.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      bus.cr
+    
+    <br/>
+  
+    
+      bus/confidence.cr
+    
+    <br/>
+  
+    
+      bus/evaluation.cr
+    
+    <br/>
+  
+    
+      bus/handler.cr
+    
+    <br/>
+  
+    
+      bus/message.cr
+    
+    <br/>
+  
+    
+      bus/pipeline.cr
+    
+    <br/>
+  
+    
+      bus/version.cr
+    
+    <br/>
+  
+
+
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="VERSION">
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.0&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#has_subscription?(key)-instance-method" class="signature"><strong>#has_subscription?</strong>(key)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message(body:Array(String)%7CString,origin:String?=nil,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,strategy:Message::Strategy=Message::Strategy::RandomWinner)-instance-method" class="signature"><strong>#message</strong>(body : Array(String) | String, origin : String? = <span class="n">nil</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, strategy : Message::Strategy = <span class="t">Message</span><span class="t">::</span><span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)</a>
+        
+          <div class="summary"><p>Generate a message for this bus.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#origin_tag-instance-method" class="signature"><strong>#origin_tag</strong></a>
+        
+          <div class="summary"><p>Generate a random UUID that does not already exist in the subscriptions.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send(message:Message)-instance-method" class="signature"><strong>#send</strong>(message : Message)</a>
+        
+          <div class="summary"><p>Send a message to the subscribers</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#subscribe(tags=[]ofString)-instance-method" class="signature"><strong>#subscribe</strong>(tags = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</a>
+        
+          <div class="summary"><p>Subscribe a new message consumer to the Bus</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#subscriptions:SplayTreeMap(String,Hash(Pipeline(Message),Bool))-instance-method" class="signature"><strong>#subscriptions</strong> : SplayTreeMap(String, Hash(Pipeline(Message), Bool))</a>
+        
+          <div class="summary"><p>As of Crystal 1.0.0, using Hashes here is faster in single threaded release mode, but it fails UGLY in multithreaded release mode.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unsubscribe(pipeline)-instance-method" class="signature"><strong>#unsubscribe</strong>(pipeline)</a>
+        
+          <div class="summary"><p>Remove a message consumer from the Bus</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>
+
+        <a class="method-permalink" href="#new-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="has_subscription?(key)-instance-method">
+      <div class="signature">
+        
+        def <strong>has_subscription?</strong>(key)
+
+        <a class="method-permalink" href="#has_subscription?(key)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message(body:Array(String)|String,origin:String?=nil,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,strategy:Message::Strategy=Message::Strategy::RandomWinner)-instance-method">
+      <div class="signature">
+        
+        def <strong>message</strong>(body : Array(String) | String, origin : String? = <span class="n">nil</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, strategy : <a href="Bus/Message/Strategy.html">Message::Strategy</a> = <span class="t">Message</span><span class="t">::</span><span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)
+
+        <a class="method-permalink" href="#message(body:Array(String)%7CString,origin:String?=nil,tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,strategy:Message::Strategy=Message::Strategy::RandomWinner)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Generate a message for this bus.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="origin_tag-instance-method">
+      <div class="signature">
+        
+        def <strong>origin_tag</strong>
+
+        <a class="method-permalink" href="#origin_tag-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Generate a random UUID that does not already exist in the subscriptions.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send(message:Message)-instance-method">
+      <div class="signature">
+        
+        def <strong>send</strong>(message : <a href="Bus/Message.html">Message</a>)
+
+        <a class="method-permalink" href="#send(message:Message)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Send a message to the subscribers</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="subscribe(tags=[]ofString)-instance-method">
+      <div class="signature">
+        
+        def <strong>subscribe</strong>(tags = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)
+
+        <a class="method-permalink" href="#subscribe(tags=[]ofString)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Subscribe a new message consumer to the Bus</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="subscriptions:SplayTreeMap(String,Hash(Pipeline(Message),Bool))-instance-method">
+      <div class="signature">
+        
+        def <strong>subscriptions</strong> : SplayTreeMap(String, Hash(<a href="Bus/Pipeline.html">Pipeline</a>(<a href="Bus/Message.html">Message</a>), Bool))
+
+        <a class="method-permalink" href="#subscriptions:SplayTreeMap(String,Hash(Pipeline(Message),Bool))-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>As of Crystal 1.0.0, using Hashes here is faster in single threaded
+release mode, but it fails UGLY in multithreaded release mode.
+The SplayTreeMap implementation is currently slightly slower than the
+hash in single threaded, but it works just fine in multithreaded mode,
+so this implementation is going to stick with the SplayTreeMap for now.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unsubscribe(pipeline)-instance-method">
+      <div class="signature">
+        
+        def <strong>unsubscribe</strong>(pipeline)
+
+        <a class="method-permalink" href="#unsubscribe(pipeline)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Remove a message consumer from the Bus</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

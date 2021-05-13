@@ -1,5 +1,5 @@
 class Bus
-  VERSION = "0.1.0"
+  VERSION = "0.1.1"
 
   struct Version
     def to_s

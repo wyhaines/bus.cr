@@ -1,7 +1,7 @@
 # bus
 
-![CSUUID CI](https://img.shields.io/github/workflow/status/wyhaines/bus.cr/bus.cr%20CI?style=for-the-badge&logo=GitHub)
-[![GitHub release](https://img.shields.io/github/release/wyhaines/CSUUID.cr.svg?style=for-the-badge)](https://github.com/wyhaines/bus.cr/releases)
+![Bus.cr CI](https://img.shields.io/github/workflow/status/wyhaines/bus.cr/bus.cr%20CI?style=for-the-badge&logo=GitHub)
+[![GitHub release](https://img.shields.io/github/release/wyhaines/bus.cr.svg?style=for-the-badge)](https://github.com/wyhaines/bus.cr/releases)
 ![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/wyhaines/bus.cr/latest?style=for-the-badge)
 
 

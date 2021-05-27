@@ -8,4 +8,3 @@ describe Bus::VERSION do
     patch =~ /\d/
   end
 end
-

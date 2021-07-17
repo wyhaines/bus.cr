@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.36.1">
-<meta name="crystal_docs.project_version" content="0.1.0">
+<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="bus">
 
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="bus">
-  <title>Bus::Message - bus 0.1.0</title>
+  <title>Bus::Message - bus main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.1.0
+        main
       </span>
     </div>
   </div>
@@ -143,7 +143,9 @@
   </h2>
   
     
-      bus/message.cr
+      <a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L5" target="_blank">
+        bus/message.cr
+      </a>
     
     <br/>
   
@@ -163,12 +165,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(pipeline:Pipeline(Message)?=nil,body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method" class="signature"><strong>.new</strong>(pipeline : Pipeline(Message)? = <span class="n">nil</span>, body : Array(String) = [<span class="s">&quot;&quot;</span>], tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : Strategy = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)</a>
+        <a href="#new(pipeline:Pipeline(Message)?=nil,body:Array(String)=[%22%22],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method" class="signature"><strong>.new</strong>(pipeline : Pipeline(Message)? = <span class="n">nil</span>, body : Array(String) = [<span class="s">&quot;&quot;</span>], tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : Strategy = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(bus:Bus,body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method" class="signature"><strong>.new</strong>(bus : Bus, body : Array(String) = [<span class="s">&quot;&quot;</span>], tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : Strategy = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)</a>
+        <a href="#new(bus:Bus,body:Array(String)=[%22%22],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method" class="signature"><strong>.new</strong>(bus : Bus, body : Array(String) = [<span class="s">&quot;&quot;</span>], tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : Strategy = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)</a>
         
       </li>
     
@@ -239,12 +241,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#reply(body:String=&quot;&quot;,parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method" class="signature"><strong>#reply</strong>(body : String = <span class="s">&quot;&quot;</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</a>
+        <a href="#reply(body:String=%22%22,parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method" class="signature"><strong>#reply</strong>(body : String = <span class="s">&quot;&quot;</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#reply(body:Array(String)=[&quot;&quot;],parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method" class="signature"><strong>#reply</strong>(body : Array(String) = [<span class="s">&quot;&quot;</span>], parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</a>
+        <a href="#reply(body:Array(String)=[%22%22],parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method" class="signature"><strong>#reply</strong>(body : Array(String) = [<span class="s">&quot;&quot;</span>], parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</a>
         
       </li>
     
@@ -323,11 +325,13 @@
         
         def self.<strong>new</strong>(pipeline : <a href="../Bus/Pipeline.html">Pipeline</a>(<a href="../Bus/Message.html">Message</a>)? = <span class="n">nil</span>, body : Array(String) = [<span class="s">&quot;&quot;</span>], tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : <a href="../Bus/Message/Strategy.html">Strategy</a> = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)
 
-        <a class="method-permalink" href="#new(pipeline:Pipeline(Message)?=nil,body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">#</a>
+        <a class="method-permalink" href="#new(pipeline:Pipeline(Message)?=nil,body:Array(String)=[%22%22],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -337,11 +341,13 @@
         
         def self.<strong>new</strong>(bus : <a href="../Bus.html">Bus</a>, body : Array(String) = [<span class="s">&quot;&quot;</span>], tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, origin : String? = <span class="n">nil</span>, uuid : CSUUID = <span class="t">CSUUID</span>.<span class="k">new</span>, strategy : <a href="../Bus/Message/Strategy.html">Strategy</a> = <span class="t">Strategy</span><span class="t">::</span><span class="t">RandomWinner</span>)
 
-        <a class="method-permalink" href="#new(bus:Bus,body:Array(String)=[&quot;&quot;],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">#</a>
+        <a class="method-permalink" href="#new(bus:Bus,body:Array(String)=[%22%22],tags:Array(String)=[]ofString,parameters:Hash(String,String)=Hash(String,String).new,origin:String?=nil,uuid:CSUUID=CSUUID.new,strategy:Strategy=Strategy::RandomWinner)-class-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L33" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -357,6 +363,8 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L45" target="_blank">View source</a>]
+        
       </div>
     </div>
   
@@ -370,6 +378,8 @@
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L57" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -399,6 +409,8 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L13" target="_blank">View source</a>]
+        
       </div>
     </div>
   
@@ -412,6 +424,8 @@
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -427,6 +441,8 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L20" target="_blank">View source</a>]
+        
       </div>
     </div>
   
@@ -440,6 +456,8 @@
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -455,6 +473,8 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L15" target="_blank">View source</a>]
+        
       </div>
     </div>
   
@@ -468,6 +488,8 @@
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -483,6 +505,8 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L17" target="_blank">View source</a>]
+        
       </div>
     </div>
   
@@ -497,6 +521,8 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L75" target="_blank">View source</a>]
+        
       </div>
     </div>
   
@@ -505,11 +531,13 @@
         
         def <strong>reply</strong>(body : String = <span class="s">&quot;&quot;</span>, parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)
 
-        <a class="method-permalink" href="#reply(body:String=&quot;&quot;,parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method">#</a>
+        <a class="method-permalink" href="#reply(body:String=%22%22,parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L79" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -519,11 +547,13 @@
         
         def <strong>reply</strong>(body : Array(String) = [<span class="s">&quot;&quot;</span>], parameters : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>, tags : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)
 
-        <a class="method-permalink" href="#reply(body:Array(String)=[&quot;&quot;],parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method">#</a>
+        <a class="method-permalink" href="#reply(body:Array(String)=[%22%22],parameters:Hash(String,String)=Hash(String,String).new,tags:Array(String)=[]ofString)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L93" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -539,6 +569,8 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L111" target="_blank">View source</a>]
+        
       </div>
     </div>
   
@@ -552,6 +584,8 @@
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -567,6 +601,8 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L14" target="_blank">View source</a>]
+        
       </div>
     </div>
   
@@ -580,6 +616,8 @@
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/wyhaines/bus.cr/blob/8faada0ff85876cd109460d972d296b5461f5648/src/bus/message.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -48,7 +48,7 @@ describe Bus::Message do
     msg.pipeline.should eq pipeline
     msg.body.should eq ["This is a message body."]
     msg.tags.should eq ["handler", "handler:test"]
-    msg.parameters.should eq ({"this" => "that", "that" => "thensome"})
+    msg.parameters.should eq({"this" => "that", "that" => "thensome"})
     msg.origin.should eq origin
     msg.uuid.should eq uuid
   end

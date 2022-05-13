@@ -9,6 +9,7 @@ require "./bus/*"
 class Bus
   # As of Crystal 1.0.0, using Hashes here is faster in single threaded
   # release mode, but it fails UGLY in multithreaded release mode.
+  # Hash is not thread safe.
   # The SplayTreeMap implementation is currently slightly slower than the
   # hash in single threaded, but it works just fine in multithreaded mode,
   # so this implementation is going to stick with the SplayTreeMap for now.

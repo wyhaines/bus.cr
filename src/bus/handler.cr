@@ -1,4 +1,5 @@
 require "./pipeline"
+require "./future"
 
 class Bus
   abstract class Handler

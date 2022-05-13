@@ -1,8 +1,14 @@
 class Bus
   class Pool(H)
     getter bus : Bus
+    getter handler : H.class
+    property min : Int32
+    property max : Int32
 
-    def initialize(@bus = Bus.new)
+    def initialize(@handler, @min = 1, @max = 5, initial = 1, @bus = Bus.new)
+    end
+
+    def initialize(@handler, @min = 1, @max = 5, initial = 1, @bus = Bus.new, &initializer)
     end
 
     def do
